@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{33C0E4CD-AFFC-49E2-ADA4-3C837AC5144A}</ProjectGuid>
+    <RootNamespace>llboard</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.\gr_common\core;.\gr_common\core\avr;.\gr_common\core\utility\driver;.\gr_common\core\utility\r_byteq_v1.30;.\gr_common\core\utility\r_config;.\gr_common\core\utility\T4_src;.\gr_common\rx63n;.\gr_common\lib\DSP;.\gr_common\lib\Firmata;.\gr_common\lib\EEPROM;.\gr_common\lib\LiquidCrystal;.\gr_common\lib\SD;.\gr_common\lib\Servo;.\gr_common\lib\SoftwareSerial;.\gr_common\lib\SPI;.\gr_common\lib\Stepper;.\gr_common\lib\Wire;.\wrbb_mruby\include;.\wrbb_mruby;.\wrbb_eepfile;.\wrbb_rubic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="gr_common\core\avr\avrlib.c" />
+    <ClCompile Include="gr_common\core\Ethernet.cpp" />
+    <ClCompile Include="gr_common\core\HardwareSerial.cpp" />
+    <ClCompile Include="gr_common\core\main.cpp" />
+    <ClCompile Include="gr_common\core\MsTimer2.cpp" />
+    <ClCompile Include="gr_common\core\new.cpp" />
+    <ClCompile Include="gr_common\core\Print.cpp" />
+    <ClCompile Include="gr_common\core\RTC.cpp" />
+    <ClCompile Include="gr_common\core\Stream.cpp" />
+    <ClCompile Include="gr_common\core\Tone.cpp" />
+    <ClCompile Include="gr_common\core\usbdescriptors.c" />
+    <ClCompile Include="gr_common\core\usb_cdc.c" />
+    <ClCompile Include="gr_common\core\usb_core.c" />
+    <ClCompile Include="gr_common\core\usb_hal.c" />
+    <ClCompile Include="gr_common\core\utilities.cpp" />
+    <ClCompile Include="gr_common\core\utility\driver\phy.c" />
+    <ClCompile Include="gr_common\core\utility\driver\r_ether.c" />
+    <ClCompile Include="gr_common\core\utility\driver\t4_driver.c" />
+    <ClCompile Include="gr_common\core\utility\driver\timer.c" />
+    <ClCompile Include="gr_common\core\utility\r_byteq_v1.30\r_byteq.c" />
+    <ClCompile Include="gr_common\core\utility\T4_src\config_tcpudp.c" />
+    <ClCompile Include="gr_common\core\utility\T4_src\ether.c" />
+    <ClCompile Include="gr_common\core\utility\T4_src\ip.c" />
+    <ClCompile Include="gr_common\core\utility\T4_src\IPAddress.cpp" />
+    <ClCompile Include="gr_common\core\utility\T4_src\r_dhcp_client.c" />
+    <ClCompile Include="gr_common\core\utility\T4_src\r_dns_client.c" />
+    <ClCompile Include="gr_common\core\utility\T4_src\T4_Version.c" />
+    <ClCompile Include="gr_common\core\utility\T4_src\tcp.c" />
+    <ClCompile Include="gr_common\core\utility\T4_src\tcp_api.c" />
+    <ClCompile Include="gr_common\core\utility\T4_src\udp.c" />
+    <ClCompile Include="gr_common\core\WInterrupts.c" />
+    <ClCompile Include="gr_common\core\wiring.c" />
+    <ClCompile Include="gr_common\core\wiring_analog.c" />
+    <ClCompile Include="gr_common\core\wiring_digital.c" />
+    <ClCompile Include="gr_common\core\wiring_pulse.c" />
+    <ClCompile Include="gr_common\core\wiring_shift.c" />
+    <ClCompile Include="gr_common\core\WMath.cpp" />
+    <ClCompile Include="gr_common\core\WString.cpp" />
+    <ClCompile Include="gr_common\lib\DSP\DSP.cpp" />
+    <ClCompile Include="gr_common\lib\EEPROM\EEPROM.cpp" />
+    <ClCompile Include="gr_common\lib\EEPROM\utility\r_flash_api_rx600.c" />
+    <ClCompile Include="gr_common\lib\Firmata\Firmata.cpp" />
+    <ClCompile Include="gr_common\lib\LiquidCrystal\LiquidCrystal.cpp" />
+    <ClCompile Include="gr_common\lib\SD\File.cpp" />
+    <ClCompile Include="gr_common\lib\SD\SD.cpp" />
+    <ClCompile Include="gr_common\lib\SD\utility\Sd2Card.cpp" />
+    <ClCompile Include="gr_common\lib\SD\utility\SdFile.cpp" />
+    <ClCompile Include="gr_common\lib\SD\utility\SdVolume.cpp" />
+    <ClCompile Include="gr_common\lib\Servo\Servo.cpp" />
+    <ClCompile Include="gr_common\lib\SPI\SPI.cpp" />
+    <ClCompile Include="gr_common\lib\Stepper\Stepper.cpp" />
+    <ClCompile Include="gr_common\lib\Wire\utility\I2cMaster.cpp" />
+    <ClCompile Include="gr_common\lib\Wire\utility\twi_rx.c" />
+    <ClCompile Include="gr_common\lib\Wire\Wire.cpp" />
+    <ClCompile Include="gr_common\rx63n\exception_handler.cpp" />
+    <ClCompile Include="gr_common\rx63n\hardware_setup.cpp" />
+    <ClCompile Include="gr_common\rx63n\interrupt_handlers.c" />
+    <ClCompile Include="gr_common\rx63n\reboot.c" />
+    <ClCompile Include="gr_common\rx63n\util.c" />
+    <ClCompile Include="gr_common\rx63n\vector_table.c" />
+    <ClCompile Include="gr_sketch.cpp" />
+    <ClCompile Include="wrbb_eepfile\eepfile.cpp" />
+    <ClCompile Include="wrbb_eepfile\eeploader.cpp" />
+    <ClCompile Include="wrbb_mruby\sExec.cpp" />
+    <ClCompile Include="wrbb_mruby\sI2c.cpp" />
+    <ClCompile Include="wrbb_mruby\sKernel.cpp" />
+    <ClCompile Include="wrbb_mruby\sMem.cpp" />
+    <ClCompile Include="wrbb_mruby\sPanCake.cpp" />
+    <ClCompile Include="wrbb_mruby\sRtc.cpp" />
+    <ClCompile Include="wrbb_mruby\sSdCard.cpp" />
+    <ClCompile Include="wrbb_mruby\sSerial.cpp" />
+    <ClCompile Include="wrbb_mruby\sServo.cpp" />
+    <ClCompile Include="wrbb_mruby\sSys.cpp" />
+    <ClCompile Include="wrbb_mruby\sWiFi.cpp" />
+    <ClCompile Include="wrbb_rubic\rubic.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="gr_common\core\Arduino.h" />
+    <ClInclude Include="gr_common\core\avr\avrlib.h" />
+    <ClInclude Include="gr_common\core\avr\interrupt.h" />
+    <ClInclude Include="gr_common\core\avr\io.h" />
+    <ClInclude Include="gr_common\core\avr\pgmspace.h" />
+    <ClInclude Include="gr_common\core\avr\portpins.h" />
+    <ClInclude Include="gr_common\core\avr\sfr_defs.h" />
+    <ClInclude Include="gr_common\core\binary.h" />
+    <ClInclude Include="gr_common\core\Ethernet.h" />
+    <ClInclude Include="gr_common\core\HardwareSerial.h" />
+    <ClInclude Include="gr_common\core\HardwareSerial_private.h" />
+    <ClInclude Include="gr_common\core\MsTimer2.h" />
+    <ClInclude Include="gr_common\core\new.h" />
+    <ClInclude Include="gr_common\core\pins_arduino.h" />
+    <ClInclude Include="gr_common\core\Print.h" />
+    <ClInclude Include="gr_common\core\Printable.h" />
+    <ClInclude Include="gr_common\core\RTC.h" />
+    <ClInclude Include="gr_common\core\Stream.h" />
+    <ClInclude Include="gr_common\core\Types.h" />
+    <ClInclude Include="gr_common\core\usbdescriptors.h" />
+    <ClInclude Include="gr_common\core\usb_cdc.h" />
+    <ClInclude Include="gr_common\core\usb_common.h" />
+    <ClInclude Include="gr_common\core\usb_core.h" />
+    <ClInclude Include="gr_common\core\usb_hal.h" />
+    <ClInclude Include="gr_common\core\utilities.h" />
+    <ClInclude Include="gr_common\core\utility\driver\phy.h" />
+    <ClInclude Include="gr_common\core\utility\driver\r_ether.h" />
+    <ClInclude Include="gr_common\core\utility\driver\r_ether_local.h" />
+    <ClInclude Include="gr_common\core\utility\driver\timer.h" />
+    <ClInclude Include="gr_common\core\utility\r_byteq_v1.30\r_byteq_config.h" />
+    <ClInclude Include="gr_common\core\utility\r_byteq_v1.30\r_byteq_config_reference.h" />
+    <ClInclude Include="gr_common\core\utility\r_byteq_v1.30\r_byteq_if.h" />
+    <ClInclude Include="gr_common\core\utility\r_byteq_v1.30\r_byteq_private.h" />
+    <ClInclude Include="gr_common\core\utility\r_config\r_t4_dhcp_client_rx_config.h" />
+    <ClInclude Include="gr_common\core\utility\r_config\r_t4_dns_client_rx_config.h" />
+    <ClInclude Include="gr_common\core\utility\r_config\r_t4_ftp_server_rx_config.h" />
+    <ClInclude Include="gr_common\core\utility\r_config\r_t4_http_server_rx_config.h" />
+    <ClInclude Include="gr_common\core\utility\r_config\r_t4_rx_config.h" />
+    <ClInclude Include="gr_common\core\utility\T4_src\ether.h" />
+    <ClInclude Include="gr_common\core\utility\T4_src\ip.h" />
+    <ClInclude Include="gr_common\core\utility\T4_src\IPAddress.h" />
+    <ClInclude Include="gr_common\core\utility\T4_src\r_dhcp_client.h" />
+    <ClInclude Include="gr_common\core\utility\T4_src\r_dns_client.h" />
+    <ClInclude Include="gr_common\core\utility\T4_src\r_mw_version.h" />
+    <ClInclude Include="gr_common\core\utility\T4_src\r_stdint.h" />
+    <ClInclude Include="gr_common\core\utility\T4_src\r_t4_dhcp_client_rx_if.h" />
+    <ClInclude Include="gr_common\core\utility\T4_src\r_t4_dns_client_rx_if.h" />
+    <ClInclude Include="gr_common\core\utility\T4_src\r_t4_itcpip.h" />
+    <ClInclude Include="gr_common\core\utility\T4_src\t4define.h" />
+    <ClInclude Include="gr_common\core\utility\T4_src\tcp.h" />
+    <ClInclude Include="gr_common\core\utility\T4_src\type.h" />
+    <ClInclude Include="gr_common\core\utility\T4_src\udp.h" />
+    <ClInclude Include="gr_common\core\WCharacter.h" />
+    <ClInclude Include="gr_common\core\wiring_private.h" />
+    <ClInclude Include="gr_common\core\WString.h" />
+    <ClInclude Include="gr_common\lib\DSP\DSP.h" />
+    <ClInclude Include="gr_common\lib\DSP\utility\r_dsp_complex.h" />
+    <ClInclude Include="gr_common\lib\DSP\utility\r_dsp_filters.h" />
+    <ClInclude Include="gr_common\lib\DSP\utility\r_dsp_matrix.h" />
+    <ClInclude Include="gr_common\lib\DSP\utility\r_dsp_statistical.h" />
+    <ClInclude Include="gr_common\lib\DSP\utility\r_dsp_transform.h" />
+    <ClInclude Include="gr_common\lib\DSP\utility\r_dsp_typedefs.h" />
+    <ClInclude Include="gr_common\lib\DSP\utility\r_dsp_types.h" />
+    <ClInclude Include="gr_common\lib\EEPROM\EEPROM.h" />
+    <ClInclude Include="gr_common\lib\EEPROM\utility\r_flash_api_rx600.h" />
+    <ClInclude Include="gr_common\lib\Firmata\Boards.h" />
+    <ClInclude Include="gr_common\lib\Firmata\Firmata.h" />
+    <ClInclude Include="gr_common\lib\LiquidCrystal\LiquidCrystal.h" />
+    <ClInclude Include="gr_common\lib\SD\SD.h" />
+    <ClInclude Include="gr_common\lib\SD\utility\FatStructs.h" />
+    <ClInclude Include="gr_common\lib\SD\utility\Sd2Card.h" />
+    <ClInclude Include="gr_common\lib\SD\utility\Sd2PinMap.h" />
+    <ClInclude Include="gr_common\lib\SD\utility\SdFat.h" />
+    <ClInclude Include="gr_common\lib\SD\utility\SdFatmainpage.h" />
+    <ClInclude Include="gr_common\lib\SD\utility\SdFatUtil.h" />
+    <ClInclude Include="gr_common\lib\SD\utility\SdInfo.h" />
+    <ClInclude Include="gr_common\lib\Servo\Servo.h" />
+    <ClInclude Include="gr_common\lib\SPI\SPI.h" />
+    <ClInclude Include="gr_common\lib\Stepper\Stepper.h" />
+    <ClInclude Include="gr_common\lib\Wire\utility\I2cMaster.h" />
+    <ClInclude Include="gr_common\lib\Wire\utility\twi_rx.h" />
+    <ClInclude Include="gr_common\lib\Wire\Wire.h" />
+    <ClInclude Include="gr_common\rx63n\interrupt_handlers.h" />
+    <ClInclude Include="gr_common\rx63n\iodefine.h" />
+    <ClInclude Include="gr_common\rx63n\iodefine_gcc63n.h" />
+    <ClInclude Include="gr_common\rx63n\reboot.h" />
+    <ClInclude Include="gr_common\rx63n\rx63n_stdio.h" />
+    <ClInclude Include="gr_common\rx63n\specific_instructions.h" />
+    <ClInclude Include="gr_common\rx63n\typedefine.h" />
+    <ClInclude Include="gr_common\rx63n\user_interrupt.h" />
+    <ClInclude Include="gr_common\rx63n\util.h" />
+    <ClInclude Include="wrbb_eepfile\eepfile.h" />
+    <ClInclude Include="wrbb_eepfile\eeploader.h" />
+    <ClInclude Include="wrbb_mruby\sExec.h" />
+    <ClInclude Include="wrbb_mruby\sI2c.h" />
+    <ClInclude Include="wrbb_mruby\sKernel.h" />
+    <ClInclude Include="wrbb_mruby\sMem.h" />
+    <ClInclude Include="wrbb_mruby\sPanCake.h" />
+    <ClInclude Include="wrbb_mruby\sRtc.h" />
+    <ClInclude Include="wrbb_mruby\sSdCard.h" />
+    <ClInclude Include="wrbb_mruby\sSerial.h" />
+    <ClInclude Include="wrbb_mruby\sServo.h" />
+    <ClInclude Include="wrbb_mruby\sSys.h" />
+    <ClInclude Include="wrbb.h" />
+    <ClInclude Include="wrbb_mruby\sWiFi.h" />
+    <ClInclude Include="wrbb_rubic\rubic.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="gr_common\core\utility\T4_src\checksum\rx\cksum_rx_little.asm" />
+    <None Include="gr_common\linker_arduino.gsi" />
+    <None Include="gr_common\rx63n\reset_program.asm" />
+    <None Include="makefile" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,588 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ソース ファイル">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="ヘッダー ファイル">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="ソース ファイル\wrbb_eepfile">
+      <UniqueIdentifier>{b5332ee2-79d9-4823-984b-4e8c62bd911e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\wrbb_mruby">
+      <UniqueIdentifier>{1080b18b-8e67-4628-a47c-247020901f35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\gr_common">
+      <UniqueIdentifier>{a0f79191-8c21-45ee-9b9c-565578c78be4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\wrbb_rubic">
+      <UniqueIdentifier>{03a140f6-be1f-4d6b-b665-170dce0fe6dc}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="wrbb_eepfile\eepfile.cpp">
+      <Filter>ソース ファイル\wrbb_eepfile</Filter>
+    </ClCompile>
+    <ClCompile Include="wrbb_eepfile\eeploader.cpp">
+      <Filter>ソース ファイル\wrbb_eepfile</Filter>
+    </ClCompile>
+    <ClCompile Include="wrbb_mruby\sExec.cpp">
+      <Filter>ソース ファイル\wrbb_mruby</Filter>
+    </ClCompile>
+    <ClCompile Include="wrbb_mruby\sKernel.cpp">
+      <Filter>ソース ファイル\wrbb_mruby</Filter>
+    </ClCompile>
+    <ClCompile Include="wrbb_mruby\sSys.cpp">
+      <Filter>ソース ファイル\wrbb_mruby</Filter>
+    </ClCompile>
+    <ClCompile Include="wrbb_mruby\sSerial.cpp">
+      <Filter>ソース ファイル\wrbb_mruby</Filter>
+    </ClCompile>
+    <ClCompile Include="wrbb_mruby\sMem.cpp">
+      <Filter>ソース ファイル\wrbb_mruby</Filter>
+    </ClCompile>
+    <ClCompile Include="wrbb_mruby\sI2c.cpp">
+      <Filter>ソース ファイル\wrbb_mruby</Filter>
+    </ClCompile>
+    <ClCompile Include="wrbb_mruby\sServo.cpp">
+      <Filter>ソース ファイル\wrbb_mruby</Filter>
+    </ClCompile>
+    <ClCompile Include="wrbb_mruby\sRtc.cpp">
+      <Filter>ソース ファイル\wrbb_mruby</Filter>
+    </ClCompile>
+    <ClCompile Include="wrbb_mruby\sPanCake.cpp">
+      <Filter>ソース ファイル\wrbb_mruby</Filter>
+    </ClCompile>
+    <ClCompile Include="wrbb_mruby\sSdCard.cpp">
+      <Filter>ソース ファイル\wrbb_mruby</Filter>
+    </ClCompile>
+    <ClCompile Include="wrbb_mruby\sWiFi.cpp">
+      <Filter>ソース ファイル\wrbb_mruby</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_sketch.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\avr\avrlib.c">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\Ethernet.cpp">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\HardwareSerial.cpp">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\main.cpp">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\MsTimer2.cpp">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\new.cpp">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\Print.cpp">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\RTC.cpp">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\Stream.cpp">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\Tone.cpp">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\usbdescriptors.c">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\usb_cdc.c">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\usb_core.c">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\usb_hal.c">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\utilities.cpp">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\utility\driver\phy.c">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\utility\driver\r_ether.c">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\utility\driver\t4_driver.c">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\utility\driver\timer.c">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\utility\r_byteq_v1.30\r_byteq.c">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\utility\T4_src\config_tcpudp.c">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\utility\T4_src\ether.c">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\utility\T4_src\ip.c">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\utility\T4_src\IPAddress.cpp">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\utility\T4_src\r_dhcp_client.c">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\utility\T4_src\r_dns_client.c">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\utility\T4_src\T4_Version.c">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\utility\T4_src\tcp.c">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\utility\T4_src\tcp_api.c">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\utility\T4_src\udp.c">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\WInterrupts.c">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\wiring.c">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\wiring_analog.c">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\wiring_digital.c">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\wiring_pulse.c">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\wiring_shift.c">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\WMath.cpp">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\core\WString.cpp">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\lib\DSP\DSP.cpp">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\lib\EEPROM\EEPROM.cpp">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\lib\EEPROM\utility\r_flash_api_rx600.c">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\lib\Firmata\Firmata.cpp">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\lib\LiquidCrystal\LiquidCrystal.cpp">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\lib\SD\File.cpp">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\lib\SD\SD.cpp">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\lib\SD\utility\Sd2Card.cpp">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\lib\SD\utility\SdFile.cpp">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\lib\SD\utility\SdVolume.cpp">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\lib\Servo\Servo.cpp">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\lib\SPI\SPI.cpp">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\lib\Stepper\Stepper.cpp">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\lib\Wire\utility\I2cMaster.cpp">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\lib\Wire\utility\twi_rx.c">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\lib\Wire\Wire.cpp">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\rx63n\exception_handler.cpp">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\rx63n\hardware_setup.cpp">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\rx63n\interrupt_handlers.c">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\rx63n\reboot.c">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\rx63n\util.c">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="gr_common\rx63n\vector_table.c">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClCompile>
+    <ClCompile Include="wrbb_rubic\rubic.cpp">
+      <Filter>ソース ファイル\wrbb_rubic</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="wrbb_eepfile\eepfile.h">
+      <Filter>ソース ファイル\wrbb_eepfile</Filter>
+    </ClInclude>
+    <ClInclude Include="wrbb_eepfile\eeploader.h">
+      <Filter>ソース ファイル\wrbb_eepfile</Filter>
+    </ClInclude>
+    <ClInclude Include="wrbb_mruby\sExec.h">
+      <Filter>ソース ファイル\wrbb_mruby</Filter>
+    </ClInclude>
+    <ClInclude Include="wrbb_mruby\sKernel.h">
+      <Filter>ソース ファイル\wrbb_mruby</Filter>
+    </ClInclude>
+    <ClInclude Include="wrbb_mruby\sSys.h">
+      <Filter>ソース ファイル\wrbb_mruby</Filter>
+    </ClInclude>
+    <ClInclude Include="wrbb_mruby\sSerial.h">
+      <Filter>ソース ファイル\wrbb_mruby</Filter>
+    </ClInclude>
+    <ClInclude Include="wrbb_mruby\sMem.h">
+      <Filter>ソース ファイル\wrbb_mruby</Filter>
+    </ClInclude>
+    <ClInclude Include="wrbb_mruby\sI2c.h">
+      <Filter>ソース ファイル\wrbb_mruby</Filter>
+    </ClInclude>
+    <ClInclude Include="wrbb_mruby\sServo.h">
+      <Filter>ソース ファイル\wrbb_mruby</Filter>
+    </ClInclude>
+    <ClInclude Include="wrbb_mruby\sRtc.h">
+      <Filter>ソース ファイル\wrbb_mruby</Filter>
+    </ClInclude>
+    <ClInclude Include="wrbb_mruby\sPanCake.h">
+      <Filter>ソース ファイル\wrbb_mruby</Filter>
+    </ClInclude>
+    <ClInclude Include="wrbb_mruby\sSdCard.h">
+      <Filter>ソース ファイル\wrbb_mruby</Filter>
+    </ClInclude>
+    <ClInclude Include="wrbb_mruby\sWiFi.h">
+      <Filter>ソース ファイル\wrbb_mruby</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\Arduino.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\avr\avrlib.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\avr\interrupt.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\avr\io.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\avr\pgmspace.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\avr\portpins.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\avr\sfr_defs.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\binary.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\Ethernet.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\HardwareSerial.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\HardwareSerial_private.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\MsTimer2.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\new.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\pins_arduino.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\Print.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\Printable.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\RTC.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\Stream.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\Types.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\usbdescriptors.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\usb_cdc.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\usb_common.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\usb_core.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\usb_hal.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\utilities.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\utility\driver\phy.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\utility\driver\r_ether.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\utility\driver\r_ether_local.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\utility\driver\timer.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\utility\r_byteq_v1.30\r_byteq_config.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\utility\r_byteq_v1.30\r_byteq_config_reference.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\utility\r_byteq_v1.30\r_byteq_if.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\utility\r_byteq_v1.30\r_byteq_private.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\utility\r_config\r_t4_dhcp_client_rx_config.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\utility\r_config\r_t4_dns_client_rx_config.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\utility\r_config\r_t4_ftp_server_rx_config.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\utility\r_config\r_t4_http_server_rx_config.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\utility\r_config\r_t4_rx_config.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\utility\T4_src\ether.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\utility\T4_src\ip.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\utility\T4_src\IPAddress.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\utility\T4_src\r_dhcp_client.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\utility\T4_src\r_dns_client.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\utility\T4_src\r_mw_version.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\utility\T4_src\r_stdint.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\utility\T4_src\r_t4_dhcp_client_rx_if.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\utility\T4_src\r_t4_dns_client_rx_if.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\utility\T4_src\r_t4_itcpip.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\utility\T4_src\t4define.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\utility\T4_src\tcp.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\utility\T4_src\type.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\utility\T4_src\udp.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\WCharacter.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\wiring_private.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\core\WString.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\lib\DSP\DSP.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\lib\DSP\utility\r_dsp_complex.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\lib\DSP\utility\r_dsp_filters.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\lib\DSP\utility\r_dsp_matrix.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\lib\DSP\utility\r_dsp_statistical.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\lib\DSP\utility\r_dsp_transform.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\lib\DSP\utility\r_dsp_typedefs.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\lib\DSP\utility\r_dsp_types.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\lib\EEPROM\EEPROM.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\lib\EEPROM\utility\r_flash_api_rx600.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\lib\Firmata\Boards.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\lib\Firmata\Firmata.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\lib\LiquidCrystal\LiquidCrystal.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\lib\SD\SD.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\lib\SD\utility\FatStructs.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\lib\SD\utility\Sd2Card.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\lib\SD\utility\Sd2PinMap.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\lib\SD\utility\SdFat.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\lib\SD\utility\SdFatmainpage.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\lib\SD\utility\SdFatUtil.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\lib\SD\utility\SdInfo.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\lib\Servo\Servo.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\lib\SPI\SPI.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\lib\Stepper\Stepper.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\lib\Wire\utility\I2cMaster.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\lib\Wire\utility\twi_rx.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\lib\Wire\Wire.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\rx63n\interrupt_handlers.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\rx63n\iodefine.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\rx63n\iodefine_gcc63n.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\rx63n\reboot.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\rx63n\rx63n_stdio.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\rx63n\specific_instructions.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\rx63n\typedefine.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\rx63n\user_interrupt.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="gr_common\rx63n\util.h">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </ClInclude>
+    <ClInclude Include="wrbb.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="wrbb_rubic\rubic.h">
+      <Filter>ソース ファイル\wrbb_rubic</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="makefile" />
+    <None Include="gr_common\linker_arduino.gsi">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </None>
+    <None Include="gr_common\core\utility\T4_src\checksum\rx\cksum_rx_little.asm">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </None>
+    <None Include="gr_common\rx63n\reset_program.asm">
+      <Filter>ソース ファイル\gr_common</Filter>
+    </None>
+  </ItemGroup>
+</Project>
