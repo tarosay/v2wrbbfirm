@@ -16,7 +16,7 @@
 #include <eepfile.h>
 #include <eeploader.h>
 #include <iodefine_gcc63n.h>
-//#include <rubic.h>
+#include <rubic.h>
 
 #include <mruby/version.h>
 #include <mruby.h>
@@ -29,7 +29,7 @@ char RubyFilename[RUBY_FILENAME_SIZE];
 char ExeFilename[RUBY_FILENAME_SIZE];		//現在実行されているファイルのパス名
 
 extern volatile char ProgVer[];
-//extern int Ack_FE_mode;
+extern int Ack_FE_mode;
 
 //**********************************
 //初期化を行います
@@ -45,7 +45,7 @@ int i;
 
 	//スタートファイルと、0xFEアックを返すかどうかのモードを読み込みます
 	RubyStartFileName[0] = 0;
-	//Ack_FE_mode = -1;
+	Ack_FE_mode = -1;
 
 	FILEEEP fpj;
 	FILEEEP *fp = &fpj;
@@ -53,7 +53,7 @@ int i;
 	//スタートファイル名を読み込みます
 	if(EEP.fopen( fp, XML_FILENAME, EEP_READ ) == -1){
 		strcpy( RubyStartFileName, RUBY_FILENAME );
-//		Ack_FE_mode = 1;
+		Ack_FE_mode = 1;
 	}
 	else{
 
@@ -162,8 +162,8 @@ void setup()
 	//vmの初期化
 	init_vm();
 
-	////割り込みタイマー設定
-	//rubic_set();
+	//割り込みタイマー設定
+	rubic_set();
 
 	//Port 3-5がHIGHだったら、EEPROMファイルローダーに飛ぶ
 	if( FILE_LOAD == 1 ){

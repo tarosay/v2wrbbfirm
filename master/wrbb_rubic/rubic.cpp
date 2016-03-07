@@ -27,33 +27,25 @@ void rubic_ACK(int mode)
 	if(mode == 1){
 		Ack_FE_mode = 1;
 		MsTimer2::start();
-		//interrupts();
 	}
 	else{
 		Ack_FE_mode = 0;
-		//noInterrupts();
 		MsTimer2::stop();
 	}
 }
 
-//**************************************************
-//  1000Hz 10msec割り込み
-//**************************************************
+////**************************************************
+////  1000Hz 10msec割り込み
+////**************************************************
 void timer1000hz()
 {
 	return;
 
-	//pushi();
-	if(Ack_FE_mode == 1 && Serial.peek() == ' '){
-		interrupts();
-		//Serial.write('%');
-		//Serial.print(Serial.peek());
-		//Serial.println(" ***************");
-		//Serial.read();
-		//Serial.write(Serial.read());
-	//	Serial.write('%');
+	interrupts();
+	if(Ack_FE_mode == 1 && Serial.peek() == -2){
+		Serial.read();
+		Serial.write(0xFE);
 	}
-	//popi();
 }
 
 //**************************************************

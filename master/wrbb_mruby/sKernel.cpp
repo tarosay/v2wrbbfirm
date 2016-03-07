@@ -1,21 +1,16 @@
 /*
  * カーネル関連
  *
- * Copyright (c) 2015 Minao Yamamoto
+ * Copyright (c) 2015-2016 Minao Yamamoto
  *
  * This software is released under the MIT License.
  * 
- * http://opensource.org/licenses/mit-license.php
+ * https://github.com/tarosay/Wakayama-mruby-board/blob/master/MITL
  */
 #include <Arduino.h>
-//#include <string.h>
-//#include <time.h>
-//#include <sys/time.h>
+#include <util.h>
 
 #include <mruby.h>
-//#include "mruby/string.h"
-//#include "mruby/variable.h"
-//#include "mruby/array.h"
 
 #include "../wrbb.h"
 
@@ -105,6 +100,21 @@ int ret = 0;
 		break;
 	case 25:
 		ret = RB_PIN25;
+		break;
+	case 26:
+		ret = RB_PIN26;
+		break;
+	case 27:
+		ret = RB_PIN27;
+		break;
+	case 30:
+		ret = RB_PIN30;
+		break;
+	case 31:
+		ret = RB_PIN31;
+		break;
+	case 33:
+		ret = RB_PIN33;
 		break;
 	}
 
@@ -236,7 +246,8 @@ int anapin, value;
 //**************************************************
 // PWM出力: pwm
 //	pwm(pin, value)
-//	pin: ピンの番号
+//	pin: ピンの番号(0,1,7,8,11,23ピンがPWM可能)
+//       ただし、23ピンは5ピンと24ピン短絡しているので、使用時は5ピンと24ピンをINPUTにしておく
 //  value:	出力PWM比率(0～255)
 //**************************************************
 mrb_value mrb_kernel_pwm(mrb_state *mrb, mrb_value self)
@@ -245,33 +256,42 @@ int pin, value;
 
 	mrb_get_args(mrb, "ii", &pin, &value);
 
-	if( value>=0 && value<256 ){
+	if(pin == 0
+	|| pin == 1
+	|| pin == 7
+	|| pin == 8
+	|| pin == 11){
 		analogWrite( wrb2sakura(pin), value );
 	}
-	else{
-		analogWrite( wrb2sakura(pin), 0 );
-	}
+	else if(pin == 23){
+		PinMode mode5 = getPinMode(wrb2sakura(5));
+		PinMode mode24 = getPinMode(wrb2sakura(24));
+		if((mode5 == PinModeInput || mode5 == PinModeInputPullUp)
+			&& (mode24 == PinModeInput || mode24 == PinModeInputPullUp)){
 
+			analogWrite(wrb2sakura(pin), value );
+		}
+	}
 	return mrb_nil_value();			//戻り値は無しですよ。
 }
 
-//**************************************************
-// PWM周波数設定: pwmHz
-//	pwmHz(value)
-//  value:	周波数(12～184999)Hz
-//**************************************************
-mrb_value mrb_kernel_pwmHz(mrb_state *mrb, mrb_value self)
-{
-int value;
-
-	mrb_get_args(mrb, "i", &value);
-
-	if( value>=12 && value<18500 ){
-		analogWriteFrequency(value);
-	}
-
-	return mrb_nil_value();			//戻り値は無しですよ。
-}
+////**************************************************
+//// PWM周波数設定: pwmHz
+////	pwmHz(value)
+////  value:	周波数(12～184999)Hz
+////**************************************************
+//mrb_value mrb_kernel_pwmHz(mrb_state *mrb, mrb_value self)
+//{
+//int value;
+//
+//	mrb_get_args(mrb, "i", &value);
+//
+//	if( value>=12 && value<18500 ){
+//		analogWriteFrequency(value);
+//	}
+//
+//	return mrb_nil_value();			//戻り値は無しですよ。
+//}
 
 //**************************************************
 // アナログDAC出力: analogDac
@@ -336,7 +356,7 @@ void kernel_Init(mrb_state *mrb)
 	mrb_define_method(mrb, mrb->kernel_module, "digitalRead", mrb_kernel_digitalRead, MRB_ARGS_REQ(1));
 	mrb_define_method(mrb, mrb->kernel_module, "analogRead", mrb_kernel_analogRead, MRB_ARGS_REQ(1));
 
-	mrb_define_method(mrb, mrb->kernel_module, "pwmHz", mrb_kernel_pwmHz, MRB_ARGS_REQ(1));
+	//mrb_define_method(mrb, mrb->kernel_module, "pwmHz", mrb_kernel_pwmHz, MRB_ARGS_REQ(1));
 	mrb_define_method(mrb, mrb->kernel_module, "analogDac", mrb_kernel_analogDac, MRB_ARGS_REQ(1));
 
 	mrb_define_method(mrb, mrb->kernel_module, "delay", mrb_kernel_delay, MRB_ARGS_REQ(1));

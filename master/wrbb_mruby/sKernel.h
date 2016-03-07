@@ -1,11 +1,11 @@
 /*
  * カーネル関連
  *
- * Copyright (c) 2015 Minao Yamamoto
+ * Copyright (c) 2015-2016 Minao Yamamoto
  *
  * This software is released under the MIT License.
  * 
- * http://opensource.org/licenses/mit-license.php
+ * https://github.com/tarosay/Wakayama-mruby-board/blob/master/MITL
  */
 #ifndef _SKERNEL_H_
 #define _SKERNEL_H_  1

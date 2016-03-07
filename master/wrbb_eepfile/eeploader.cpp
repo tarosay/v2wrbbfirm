@@ -53,7 +53,11 @@ void lineinput(char *arry)
 
 	while(k >= 0){
 		k = USB_Serial->read();
-		//DEBUG_PRINT("1.lineinput", k);
+		if(k == 0xFE){
+			DEBUG_PRINT("USB_Serial->read", k);
+			arry[len] = 0;
+			return;
+		}
 		delay(10);
 	}
 
@@ -63,15 +67,14 @@ void lineinput(char *arry)
 
 	while(true){
 		k = 0;
-		while(k <= 0){
+		while(k <= 0 ){
 			k = USB_Serial->read();
-			//DEBUG_PRINT("2.lineinput", k);
 			delay(10);
 		}
 
-		DEBUG_PRINT("lineinput", k);
+		DEBUG_PRINT("USB_Serial->read", k);
 
-		if (k == 13 || k == 10){
+		if (k == 13 || k == 10 || k == 0xFE){
 			break;		
 		}
 		else if (k == 8){

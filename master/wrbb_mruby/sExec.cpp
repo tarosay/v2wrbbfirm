@@ -1,5 +1,5 @@
 /*
- * 呼び出し実行モジュールプログラム 2016.03.03
+ * 呼び出し実行モジュールプログラム 2016.03.08
  *
  * Copyright (c) 2015-2016 Minao Yamamoto
  *
@@ -23,10 +23,10 @@
 
 #include "../wrbb.h"
 #include "sExec.h"
-//#include "sKernel.h"
+#include "sKernel.h"
 #include "sSys.h"
 #include "sSerial.h"
-//#include "sMem.h"
+#include "sMem.h"
 //#include "sI2c.h"
 //#include "sServo.h"
 
@@ -71,10 +71,10 @@ bool notFinishFlag = true;
 		return false;
 	}
 
-//	kernel_Init(mrb);	//カーネル関連メソッドの設定
+	kernel_Init(mrb);	//カーネル関連メソッドの設定
 	sys_Init(mrb);		//システム関連メソッドの設定
 	serial_Init(mrb);	//シリアル通信関連メソッドの設定
-//	mem_Init(mrb);		//ファイル関連メソッドの設定
+	mem_Init(mrb);		//ファイル関連メソッドの設定
 //	i2c_Init(mrb);		//I2C関連メソッドの設定
 //	servo_Init(mrb);	//サーボ関連メソッドの設定
 
