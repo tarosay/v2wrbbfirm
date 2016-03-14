@@ -321,7 +321,7 @@ int pin;
 int freq;
 unsigned long dura;
 
-	int n = mrb_get_args(mrb, "ii|S", &pin, &freq, &dura);
+	int n = mrb_get_args(mrb, "ii|i", &pin, &freq, &dura);
 
 	if(pin == 4 || pin >= 20){
 		return mrb_nil_value();			//戻り値は無しですよ。
