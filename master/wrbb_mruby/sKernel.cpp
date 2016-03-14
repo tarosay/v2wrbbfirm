@@ -116,6 +116,10 @@ int ret = 0;
 	case 33:
 		ret = RB_PIN33;
 		break;
+
+	default:
+		ret = 55;
+		break;
 	}
 
 return ret;
@@ -136,6 +140,10 @@ int pin, value;
 
 	mrb_get_args(mrb, "ii", &pin, &value);
 
+
+	if(pin >=20 && pin <= 30){
+		return mrb_nil_value();			//戻り値は無しですよ。
+	}
 	digitalWrite( wrb2sakura(pin), value );
 
 	return mrb_nil_value();	//戻り値は無しですよ。
@@ -243,6 +251,23 @@ int anapin, value;
 	return mrb_fixnum_value( value );
 }
 
+
+////**************************************************
+//// 出力ピンが並列接続されているピンとショートするかどうか調べます
+////
+//// true: 衝突している
+//// false: 衝突していない。片方がINPUTである。
+////**************************************************
+//bool IsWritePinCollision(int pinSub)
+//{
+//	PinMode modeSub = getPinMode(wrb2sakura(pinSub));
+//	if(modeSub == PinModeInput || modeSub== PinModeInputPullUp){
+//		return false;
+//	}
+//	return true;
+//}
+
+
 //**************************************************
 // PWM出力: pwm
 //	pwm(pin, value)
@@ -256,22 +281,12 @@ int pin, value;
 
 	mrb_get_args(mrb, "ii", &pin, &value);
 
-	if(pin == 0
-	|| pin == 1
-	|| pin == 7
-	|| pin == 8
-	|| pin == 11){
-		analogWrite( wrb2sakura(pin), value );
+	if(pin == 4 || pin >= 20){
+		return mrb_nil_value();			//戻り値は無しですよ。
 	}
-	else if(pin == 23){
-		PinMode mode5 = getPinMode(wrb2sakura(5));
-		PinMode mode24 = getPinMode(wrb2sakura(24));
-		if((mode5 == PinModeInput || mode5 == PinModeInputPullUp)
-			&& (mode24 == PinModeInput || mode24 == PinModeInputPullUp)){
 
-			analogWrite(wrb2sakura(pin), value );
-		}
-	}
+	analogWrite(wrb2sakura(pin), value );
+
 	return mrb_nil_value();			//戻り値は無しですよ。
 }
 
@@ -294,6 +309,43 @@ int pin, value;
 //}
 
 //**************************************************
+// トーン出力: tone
+//	tone(pin, frequency[,duration])
+//  pin: ピン番号
+//  frequency: 周波数(2～62500)Hz
+//  duration: 出力を維持する時間[ms]。省略時、0指定時は出力し続ける。
+//**************************************************
+mrb_value mrb_kernel_tone(mrb_state *mrb, mrb_value self)
+{
+int pin;
+int freq;
+unsigned long dura;
+
+	int n = mrb_get_args(mrb, "ii|S", &pin, &freq, &dura);
+
+	if(pin == 4 || pin >= 20){
+		return mrb_nil_value();			//戻り値は無しですよ。
+	}
+
+	dura = n < 3 ? 0 : dura;
+
+	if( freq>=2 && freq<=62500 ){
+		tone(wrb2sakura(pin), freq, dura);
+	}
+	return mrb_nil_value();			//戻り値は無しですよ。
+}
+
+//**************************************************
+// アナログDACピン初期化: initDac
+//	initDac()
+//**************************************************
+mrb_value mrb_kernel_initDac(mrb_state *mrb, mrb_value self)
+{
+	setPinModeDac(RB_PIN9);
+	return mrb_nil_value();			//戻り値は無しですよ。
+}
+
+//**************************************************
 // アナログDAC出力: analogDac
 //	analogDac(value)
 //  value:	10bit精度(0～4095)
@@ -305,7 +357,7 @@ int value;
 	mrb_get_args(mrb, "i", &value);
 
 	if( value>=0 && value<4096 ){
-		analogWriteDAC( 1, value );
+		analogWriteDAC( RB_PIN9, value );
 	}
 
 	return mrb_nil_value();			//戻り値は無しですよ。
@@ -356,7 +408,9 @@ void kernel_Init(mrb_state *mrb)
 	mrb_define_method(mrb, mrb->kernel_module, "digitalRead", mrb_kernel_digitalRead, MRB_ARGS_REQ(1));
 	mrb_define_method(mrb, mrb->kernel_module, "analogRead", mrb_kernel_analogRead, MRB_ARGS_REQ(1));
 
+	mrb_define_method(mrb, mrb->kernel_module, "tone", mrb_kernel_tone, MRB_ARGS_REQ(2)|MRB_ARGS_OPT(1));
 	//mrb_define_method(mrb, mrb->kernel_module, "pwmHz", mrb_kernel_pwmHz, MRB_ARGS_REQ(1));
+	mrb_define_method(mrb, mrb->kernel_module, "initDac", mrb_kernel_initDac, MRB_ARGS_NONE());
 	mrb_define_method(mrb, mrb->kernel_module, "analogDac", mrb_kernel_analogDac, MRB_ARGS_REQ(1));
 
 	mrb_define_method(mrb, mrb->kernel_module, "delay", mrb_kernel_delay, MRB_ARGS_REQ(1));

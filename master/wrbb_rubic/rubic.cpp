@@ -42,7 +42,7 @@ void timer1000hz()
 	return;
 
 	interrupts();
-	if(Ack_FE_mode == 1 && Serial.peek() == -2){
+	if(Ack_FE_mode == 1 && Serial.peek() == 0xFE){
 		Serial.read();
 		Serial.write(0xFE);
 	}

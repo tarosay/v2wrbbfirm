@@ -45,7 +45,7 @@
 #define LICENSE_WRBBURL		"https://github.com/tarosay/Wakayama-mruby-board/blob/master/MITL"
 
 //バージョンと日付
-#define WRBB_VERSION	"-1.43(2016/3/8)"
+#define WRBB_VERSION	"-1.45(2016/3/15)"
 
 //バイトコードフォーマットの設定
 //#define BYTECODE	BYTE_CODE2

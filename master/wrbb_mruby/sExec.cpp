@@ -28,12 +28,12 @@
 #include "sSerial.h"
 #include "sMem.h"
 //#include "sI2c.h"
-//#include "sServo.h"
+#include "sServo.h"
 
-//#if REALTIMECLOCK
-//	#include "sRtc.h"
-//#endif
-//
+#if REALTIMECLOCK
+	#include "sRtc.h"
+#endif
+
 //#if FIRMWARE == JAM
 //	#include "sPanCake.h"
 //#endif
@@ -76,12 +76,12 @@ bool notFinishFlag = true;
 	serial_Init(mrb);	//シリアル通信関連メソッドの設定
 	mem_Init(mrb);		//ファイル関連メソッドの設定
 //	i2c_Init(mrb);		//I2C関連メソッドの設定
-//	servo_Init(mrb);	//サーボ関連メソッドの設定
+	servo_Init(mrb);	//サーボ関連メソッドの設定
 
-//#if REALTIMECLOCK
-//	rtc_Init(mrb);		//RTC関連メソッドの設定
-//#endif
-//
+#if REALTIMECLOCK
+	rtc_Init(mrb);		//RTC関連メソッドの設定
+#endif
+
 //#if FIRMWARE == JAM
 //	pancake_Init(mrb);		//PanCake関連メソッドの設定
 //#endif

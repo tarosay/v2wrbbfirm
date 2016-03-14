@@ -55,10 +55,10 @@ void lineinput(char *arry)
 		k = USB_Serial->read();
 		if(k == 0xFE){
 			DEBUG_PRINT("USB_Serial->read", k);
+			USB_Serial->print(0xFE);
 			arry[len] = 0;
-			return;
 		}
-		delay(10);
+		delay(5);
 	}
 
 	//while(USB_Serial->available()){
@@ -74,8 +74,11 @@ void lineinput(char *arry)
 
 		DEBUG_PRINT("USB_Serial->read", k);
 
-		if (k == 13 || k == 10 || k == 0xFE){
+		if (k == 13 || k == 10){
 			break;		
+		}
+		else if(k == 0xFE){
+			//0xFEを返す
 		}
 		else if (k == 8){
 			len--;
@@ -196,33 +199,33 @@ void writefile(const char *fname, int size, char code, char *readData)
 	while(cnt < size){
 		len = USB_Serial->available();
 		if (len > 0){
-			if(b2aFlg == 0){
+//			if(b2aFlg == 0){
 				//****バイナリ
 				for(int i=0; i<len; i++){
 					readData[cnt + i] = (char)USB_Serial->read();
 				}
 				cnt += len;
-			}
-			else{
-				//****テキスト
-				for(int i=0; i<len; i++){
-					c = USB_Serial->read();
-					if(c != -2){
-						readData[cnt] = (char)c;
-						cnt++;
-					}
-				}
-			}
+//			}
+//			else{
+//				//****テキスト
+//				for(int i=0; i<len; i++){
+//					c = USB_Serial->read();
+//					if(c != 0xFE){
+//						readData[cnt] = (char)c;
+//						cnt++;
+//					}
+//				}
+//			}
 			tm = millis() + 2000;
 			//Serial.print("len=");Serial.println(len);
 		}
 		if(tm < millis()){	break;	}
 	}
 
-	if(tm < millis()){
-		USB_Serial->println("..Read Error!");
-		return;
-	}
+//	if(tm < millis()){
+//		USB_Serial->println("..Read Error!");
+//		return;
+//	}
 
 	USB_Serial->print(fname);
 	USB_Serial->print("(");
@@ -317,7 +320,11 @@ void readfile(const char *fname, char code)
 			USB_Serial->write((unsigned char)EEP.fread(fp));
 		}
 		else{
-			USB_Serial->print(EEP.fread(fp),16);
+			int bin = EEP.fread(fp);
+			if(bin < 0x10){
+				USB_Serial->print("0");
+			}
+			USB_Serial->print(bin, 16);
 		}
 	}
 	EEP.fclose(fp);
