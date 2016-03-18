@@ -37,11 +37,13 @@
 #include "usb_hal.h"
 #include "usb_cdc.h"
 #include "rx63n/util.h"
-
-#if defined(HAVE_HWSERIAL0)
-static void CBDoneRead(USB_ERR _err, uint32_t _NumBytes);
-static uint8_t g_Buffer[SERIAL_BUFFER_SIZE];
-#endif
+/// For USB receive /////////////////////////////
+/// The definitions are copied from usb_hal.c ///
+#include "rx63n/iodefine.h"
+/*NOTE USB0 is defined in iodefine.h file*/
+#define USBIO USB0
+#define PID_BUF     1
+/////////////////////////////////////////////
 
 struct SciInterruptRegistersTableStruct {
   uint8_t _txier;
@@ -230,7 +232,7 @@ void HardwareSerial::begin(unsigned long baud, byte config)
                 }
             }
             if (isConnected) {
-                USBCDC_Read_Async(SERIAL_BUFFER_SIZE, g_Buffer, CBDoneRead);
+//                USBCDC_Read_Async(SERIAL_BUFFER_SIZE, g_Buffer, CBDoneRead);
             } else {
                 USBCDC_Cancel();
             }
@@ -643,15 +645,46 @@ size_t HardwareSerial::write(uint8_t c)
 #include "rx63n/interrupt_handlers.h"
 
 #ifdef HAVE_HWSERIAL0
-static void CBDoneRead(USB_ERR _err, uint32_t _NumBytes)
+extern "C"{
+void ReadBulkOUTPacket(void)
 {
-  if (_err == USB_ERR_OK) {
-    for (uint32_t i = 0; i < _NumBytes; i++) {
-      Serial._store_char(g_Buffer[i]);
+    uint16_t DataLength = 0;
+
+    /*Read data using D1FIFO*/
+    /*NOTE: This probably will have already been selected if using BRDY interrupt.*/
+    do{
+    USBIO.D1FIFOSEL.BIT.CURPIPE = PIPE_BULK_OUT;
+    }while(USBIO.D1FIFOSEL.BIT.CURPIPE != PIPE_BULK_OUT);
+
+    /*Set PID to BUF*/
+    USBIO.PIPE1CTR.BIT.PID = PID_BUF;
+
+    /*Wait for buffer to be ready*/
+    while(USBIO.D1FIFOCTR.BIT.FRDY == 0){;}
+
+    /*Set Read Count Mode - so DTLN count will decrement as data read from buffer*/
+    USBIO.D1FIFOSEL.BIT.RCNT = 1;
+
+    /*Read length of data */
+    DataLength = USBIO.D1FIFOCTR.BIT.DTLN;
+
+    while(DataLength != 0){
+        /*Read from the FIFO*/
+        uint16_t Data = USBIO.D1FIFO;
+        if(DataLength >= 2){
+            /*Save first byte*/
+            Serial._store_char((uint8_t)Data);
+            /*Save second byte*/
+            Serial._store_char((uint8_t)(Data>>8));
+            DataLength-=2;
+        } else {
+            Serial._store_char((uint8_t)Data);
+            DataLength--;
+        }
     }
-  }
-  USBCDC_Read_Async(SERIAL_BUFFER_SIZE, g_Buffer, CBDoneRead);
+
 }
+} // extern C
 
 HardwareSerial Serial(0, NULL, MstpIdINVALID, INVALID_IO, INVALID_IO);
 #endif/*HAVE_HWSERIAL0*/

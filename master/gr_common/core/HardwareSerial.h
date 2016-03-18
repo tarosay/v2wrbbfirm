@@ -179,7 +179,7 @@ class HardwareSerial : public Stream
 #define HAVE_HWSERIAL3
 //#define HAVE_HWSERIAL4
 //#define HAVE_HWSERIAL5
-//#define HAVE_HWSERIAL6
+#define HAVE_HWSERIAL6
 #define HAVE_HWSERIAL7
 
 #if defined(HAVE_HWSERIAL0)

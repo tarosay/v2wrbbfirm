@@ -27,7 +27,7 @@
 #include "sSys.h"
 #include "sSerial.h"
 #include "sMem.h"
-//#include "sI2c.h"
+#include "sI2c.h"
 #include "sServo.h"
 
 #if REALTIMECLOCK
@@ -75,7 +75,7 @@ bool notFinishFlag = true;
 	sys_Init(mrb);		//システム関連メソッドの設定
 	serial_Init(mrb);	//シリアル通信関連メソッドの設定
 	mem_Init(mrb);		//ファイル関連メソッドの設定
-//	i2c_Init(mrb);		//I2C関連メソッドの設定
+	i2c_Init(mrb);		//I2C関連メソッドの設定
 	servo_Init(mrb);	//サーボ関連メソッドの設定
 
 #if REALTIMECLOCK
@@ -116,8 +116,6 @@ bool notFinishFlag = true;
 		sprintf( az,  "%s is not Open!!", ExeFilename );
 		Serial.println( az );
 		mrb_close(mrb);
-
-		//fileloader((const char*)ProgVer,"");
 		return false;
 	}
 

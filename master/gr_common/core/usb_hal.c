@@ -211,7 +211,10 @@ static void WriteControlINPacket(void);
 static void WriteBulkINPacket(void);
 static void WriteIntINPacket(void);
 static void ReadControlOUTPacket(void);
+#if 0
 static void ReadBulkOUTPacket(void);
+#endif
+extern void ReadBulkOUTPacket(void);
 
 /*Interrupt Handlers*/
 static void HandleVBus(void);
@@ -1104,6 +1107,7 @@ End USBHAL_ResetEndpoints function
 * Argument      : none
 * Return value  : none
 **********************************************************************/
+#if 0
 static void ReadBulkOUTPacket(void)
 {
     uint32_t Count = 0;
@@ -1247,6 +1251,7 @@ static void ReadBulkOUTPacket(void)
         }
     }
 }
+#endif
 /**********************************************************************
 End ReadBulkOUTPacket function
 **********************************************************************/

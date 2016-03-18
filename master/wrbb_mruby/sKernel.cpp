@@ -233,6 +233,36 @@ int pin, value;
 	return mrb_fixnum_value( value );
 }
 
+
+//**************************************************
+// アナログリファレンス: analogReference
+//	analogReference(mode)
+//  アナログ入力で使われる基準電圧を設定します
+//	mode: 0:DEFAULT：5.0V Arduino互換, 1:INTERNAL：1.1V 内蔵電圧, 2:EXTERNAL：AVREFピン供給電圧, 3:RAW12BIT：3.3V 12ビットA/D変換を行う
+//**************************************************
+mrb_value mrb_kernel_analogReference(mrb_state *mrb, mrb_value self)
+{
+int mode;
+
+	mrb_get_args(mrb, "i", &mode);
+
+	switch(mode){
+	case DEFAULT:
+		analogReference(DEFAULT);
+		break;
+	case INTERNAL:
+		analogReference(INTERNAL);
+		break;
+	case EXTERNAL:
+		analogReference(EXTERNAL);
+		break;
+	case RAW12BIT:
+		analogReference(RAW12BIT);
+		break;
+	}
+	return mrb_nil_value();			//戻り値は無しですよ。
+}
+
 //**************************************************
 // アナログリード: analogRead
 //	analogRead(pin)
@@ -307,6 +337,26 @@ int pin, value;
 //
 //	return mrb_nil_value();			//戻り値は無しですよ。
 //}
+
+//**************************************************
+// トーン出力停止: noTone
+//	noTone(pin)
+//  pin: ピン番号
+//**************************************************
+mrb_value mrb_kernel_noTone(mrb_state *mrb, mrb_value self)
+{
+int pin;
+
+	mrb_get_args(mrb, "i", &pin);
+
+	if(pin == 4 || pin >= 20){
+		return mrb_nil_value();			//戻り値は無しですよ。
+	}
+
+	noTone(wrb2sakura(pin));
+
+	return mrb_nil_value();			//戻り値は無しですよ。
+}
 
 //**************************************************
 // トーン出力: tone
@@ -386,6 +436,41 @@ int value;
 }
 
 //**************************************************
+// 乱数を得るための種を与えます: randomSeed
+//  randomSeed(value)
+//  value: 種となる値
+//**************************************************
+mrb_value mrb_kernel_randomSeed(mrb_state *mrb, mrb_value self)
+{
+unsigned int value;
+
+	mrb_get_args(mrb, "i", &value);
+
+	randomSeed(value);
+
+	return mrb_nil_value();			//戻り値は無しですよ。
+}
+
+//**************************************************
+// 乱数を取得します: random
+//  random([min,] max)
+//  min: 乱数の取りうる最小値。省略可
+//  max: 乱数の取りうる最大値
+//**************************************************
+mrb_value mrb_kernel_random(mrb_state *mrb, mrb_value self)
+{
+long value1,value2;
+
+	int n = mrb_get_args(mrb, "i|i", &value1, &value2);
+
+	if(n == 1){
+		return mrb_fixnum_value( random(value1) );
+	}
+
+	return mrb_fixnum_value( random(value1, value2) );
+}
+
+//**************************************************
 // 隠しコマンドです:  El_Psy.Congroo
 //	El_Psy.Congroo()
 //**************************************************
@@ -406,9 +491,13 @@ void kernel_Init(mrb_state *mrb)
 	mrb_define_method(mrb, mrb->kernel_module, "digitalWrite", mrb_kernel_digitalWrite, MRB_ARGS_REQ(2));
 	mrb_define_method(mrb, mrb->kernel_module, "pwm", mrb_kernel_pwm, MRB_ARGS_REQ(2));
 	mrb_define_method(mrb, mrb->kernel_module, "digitalRead", mrb_kernel_digitalRead, MRB_ARGS_REQ(1));
+
+	mrb_define_method(mrb, mrb->kernel_module, "analogReference", mrb_kernel_analogReference, MRB_ARGS_REQ(1));
 	mrb_define_method(mrb, mrb->kernel_module, "analogRead", mrb_kernel_analogRead, MRB_ARGS_REQ(1));
 
 	mrb_define_method(mrb, mrb->kernel_module, "tone", mrb_kernel_tone, MRB_ARGS_REQ(2)|MRB_ARGS_OPT(1));
+	mrb_define_method(mrb, mrb->kernel_module, "noTone", mrb_kernel_noTone, MRB_ARGS_REQ(1));
+
 	//mrb_define_method(mrb, mrb->kernel_module, "pwmHz", mrb_kernel_pwmHz, MRB_ARGS_REQ(1));
 	mrb_define_method(mrb, mrb->kernel_module, "initDac", mrb_kernel_initDac, MRB_ARGS_NONE());
 	mrb_define_method(mrb, mrb->kernel_module, "analogDac", mrb_kernel_analogDac, MRB_ARGS_REQ(1));
@@ -418,6 +507,9 @@ void kernel_Init(mrb_state *mrb)
 	mrb_define_method(mrb, mrb->kernel_module, "micros", mrb_kernel_micros, MRB_ARGS_NONE());
 
 	mrb_define_method(mrb, mrb->kernel_module, "led", mrb_kernel_led, MRB_ARGS_REQ(1));
+
+	mrb_define_method(mrb, mrb->kernel_module, "randomSeed", mrb_kernel_randomSeed, MRB_ARGS_REQ(1));
+	mrb_define_method(mrb, mrb->kernel_module, "random", mrb_kernel_random, MRB_ARGS_REQ(1)|MRB_ARGS_OPT(1));
 
 
 	struct RClass *El_PsyModule = mrb_define_module(mrb, "El_Psy");
