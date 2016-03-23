@@ -137,7 +137,6 @@
     <ClCompile Include="wrbb_mruby\sServo.cpp" />
     <ClCompile Include="wrbb_mruby\sSys.cpp" />
     <ClCompile Include="wrbb_mruby\sWiFi.cpp" />
-    <ClCompile Include="wrbb_rubic\rubic.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gr_common\core\Arduino.h" />
@@ -245,7 +244,6 @@
     <ClInclude Include="wrbb_mruby\sSys.h" />
     <ClInclude Include="wrbb.h" />
     <ClInclude Include="wrbb_mruby\sWiFi.h" />
-    <ClInclude Include="wrbb_rubic\rubic.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="gr_common\core\utility\T4_src\checksum\rx\cksum_rx_little.asm" />

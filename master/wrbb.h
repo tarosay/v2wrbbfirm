@@ -1,14 +1,10 @@
 ﻿/*
  * wrbb.h
  *
- * Copyright (c) 2015-2016 Minao Yamamoto
+ * Copyright (c) 2016 Wakayama.rb Ruby Board developers
  *
  * This software is released under the MIT License.
- * 
- * https://github.com/tarosay/Wakayama-mruby-board/blob/master/MITL
- *
- * Light weight Lanuage Board Ruby
- * Wakayamarb board 
+ * https://github.com/wakayamarb/wrbb-v2lib-firm/blob/master/MITL
  *
  */
 #ifndef _WRBB_H_
@@ -42,10 +38,10 @@
 #define LICENSE_MRUBY		"mruby is released under the MIT License."
 #define LICENSE_MRUBYURL	"https://github.com/mruby/mruby/blob/master/MITL"
 #define LICENSE_WRBB		"Wakayama-mruby-board is released under the MIT License."
-#define LICENSE_WRBBURL		"https://github.com/tarosay/Wakayama-mruby-board/blob/master/MITL"
+#define LICENSE_WRBBURL		"https://github.com/wakayamarb/wrbb-v2lib-firm/blob/master/MITL"
 
 //バージョンと日付
-#define WRBB_VERSION	"-1.51(2016/3/18)"
+#define WRBB_VERSION	"-1.56(2016/3/24)"
 
 //バイトコードフォーマットの設定
 //#define BYTECODE	BYTE_CODE2

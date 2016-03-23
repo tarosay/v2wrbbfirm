@@ -1,11 +1,11 @@
 /*
  * EEPROMをファイルのように使うクラス
  *
- * Copyright (c) 2015-2016 Minao Yamamoto
+ * Copyright (c) 2016 Wakayama.rb Ruby Board developers
  *
  * This software is released under the MIT License.
- * 
- * https://github.com/tarosay/Wakayama-mruby-board/blob/master/MITL
+ * https://github.com/wakayamarb/wrbb-v2lib-firm/blob/master/MITL
+ *
  */
 //***********************************************************
 // ファイル名
@@ -26,7 +26,6 @@
 #include <Arduino.h>
 #include <EEPROM.h>
 #include "EEPROM/utility/r_flash_api_rx600.h"
-//#include <eeprom.h>
 
 #include "eepfile.h"
 //#define    DEBUG                1        // Define if you want to debug

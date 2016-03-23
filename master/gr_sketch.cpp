@@ -1,14 +1,10 @@
 /*
  * WRBB Main
  *
- * Copyright (c) 2015-2016 Minao Yamamoto
+ * Copyright (c) 2016 Wakayama.rb Ruby Board developers
  *
  * This software is released under the MIT License.
- * 
- * https://github.com/tarosay/Wakayama-mruby-board/blob/master/MITL
- *
- * Light weight Lanuage Board Ruby
- * Wakayamarb board 
+ * https://github.com/wakayamarb/wrbb-v2lib-firm/blob/master/MITL
  *
  */
 #include <Arduino.h>
@@ -16,7 +12,6 @@
 #include <eepfile.h>
 #include <eeploader.h>
 #include <iodefine_gcc63n.h>
-#include <rubic.h>
 
 #include <mruby/version.h>
 #include <mruby.h>
@@ -29,7 +24,6 @@ char RubyFilename[RUBY_FILENAME_SIZE];
 char ExeFilename[RUBY_FILENAME_SIZE];		//現在実行されているファイルのパス名
 
 extern volatile char ProgVer[];
-extern int Ack_FE_mode;
 
 //**********************************
 //初期化を行います
@@ -43,9 +37,8 @@ int i;
 	//EEPファイル関連の初期化
 	EEP.begin();
 
-	//スタートファイルと、0xFEアックを返すかどうかのモードを読み込みます
+	//スタートファイル名を読み込みます
 	RubyStartFileName[0] = 0;
-	Ack_FE_mode = -1;
 
 	FILEEEP fpj;
 	FILEEEP *fp = &fpj;
@@ -53,10 +46,8 @@ int i;
 	//スタートファイル名を読み込みます
 	if(EEP.fopen( fp, XML_FILENAME, EEP_READ ) == -1){
 		strcpy( RubyStartFileName, RUBY_FILENAME );
-		Ack_FE_mode = 1;
 	}
 	else{
-
 		//file と ack が出るまでひたすら読み込みます
 		int pos = 0;
 		while( !EEP.fEof(fp) ){
@@ -97,33 +88,7 @@ int i;
 						break;
 					}
 				}
-
-				//break;
 			}
-
-			//if( Ack_FE_mode==-1 && dat[0]=='a' && dat[1]=='c' && dat[2]=='k'  ){
-
-			//	//見つかったので " or ' まで読み飛ばす
-			//	while( !EEP.fEof(fp) ){
-			//		en = EEP.fread(fp);
-			//		if( en<0 ){ break; }
-			//		if( (char)en==0x22 || (char)en==0x27 ){
-
-			//			//見つかったので、先頭の文字が tか fかを調べます
-			//			en = EEP.fread(fp);
-			//			if(en == 't'){
-			//				//0xFE ackを返す
-			//				Ack_FE_mode = 1;
-			//			}
-			//			else{
-			//				Ack_FE_mode = 2;
-			//			}
-			//			break;
-			//		}
-			//	}
-
-			//	//break;
-			//}
 			pos++;
 		}
 		EEP.fclose(fp);
@@ -161,9 +126,6 @@ void setup()
 
 	//vmの初期化
 	init_vm();
-
-	//割り込みタイマー設定
-	rubic_set();
 
 	//Port 3-5がHIGHだったら、EEPROMファイルローダーに飛ぶ
 	if( FILE_LOAD == 1 ){

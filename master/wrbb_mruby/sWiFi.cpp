@@ -1,19 +1,17 @@
 /*
  * ESP-WROOM-02関連
  *
- * Copyright (c) 2015-2016 Minao Yamamoto
+ * Copyright (c) 2016 Wakayama.rb Ruby Board developers
  *
  * This software is released under the MIT License.
- * 
- * http://opensource.org/licenses/mit-license.php
+ * https://github.com/wakayamarb/wrbb-v2lib-firm/blob/master/MITL
+ *
  */
 #include <Arduino.h>
 #include <string.h>
 
 #include <mruby.h>
 #include <mruby/string.h>
-
-#include <rubic.h>
 
 #include "../wrbb.h"
 #include "sKernel.h"
@@ -271,9 +269,6 @@ mrb_value mrb_wifi_Cifsr(mrb_state *mrb, mrb_value self)
 //**************************************************
 mrb_value mrb_wifi_bypass(mrb_state *mrb, mrb_value self)
 {
-	//FEアックモードを切ります
-	rubic_ACK(0);
-
 	int len0, len1,len;
 	sci_str *Sci0 = Serial.get_handle();
 

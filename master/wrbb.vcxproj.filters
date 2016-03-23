@@ -22,9 +22,6 @@
     <Filter Include="ソース ファイル\gr_common">
       <UniqueIdentifier>{a0f79191-8c21-45ee-9b9c-565578c78be4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\wrbb_rubic">
-      <UniqueIdentifier>{03a140f6-be1f-4d6b-b665-170dce0fe6dc}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="wrbb_eepfile\eepfile.cpp">
@@ -248,9 +245,6 @@
     </ClCompile>
     <ClCompile Include="gr_common\rx63n\vector_table.c">
       <Filter>ソース ファイル\gr_common</Filter>
-    </ClCompile>
-    <ClCompile Include="wrbb_rubic\rubic.cpp">
-      <Filter>ソース ファイル\wrbb_rubic</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -568,9 +562,6 @@
     </ClInclude>
     <ClInclude Include="wrbb.h">
       <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="wrbb_rubic\rubic.h">
-      <Filter>ソース ファイル\wrbb_rubic</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

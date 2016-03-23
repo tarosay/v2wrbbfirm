@@ -1,11 +1,11 @@
 /*
  * RTC関連
  *
- * Copyright (c) 2015-2016 Minao Yamamoto
+ * Copyright (c) 2016 Wakayama.rb Ruby Board developers
  *
  * This software is released under the MIT License.
- * 
- * https://github.com/tarosay/Wakayama-mruby-board/blob/master/MITL
+ * https://github.com/wakayamarb/wrbb-v2lib-firm/blob/master/MITL
+ *
  */
 #include <Arduino.h>
 #include <RTC.h>
@@ -160,6 +160,7 @@ void rtc_Init(mrb_state *mrb)
 	struct RClass *rtcModule = mrb_define_module(mrb, "Rtc");
 
 	mrb_define_module_function(mrb, rtcModule, "init", mrb_rtc_init, MRB_ARGS_NONE());
+	mrb_define_module_function(mrb, rtcModule, "begin", mrb_rtc_init, MRB_ARGS_NONE());
 	mrb_define_module_function(mrb, rtcModule, "deinit", mrb_rtc_deinit, MRB_ARGS_NONE());
 	mrb_define_module_function(mrb, rtcModule, "setTime", mrb_rtc_setTime, MRB_ARGS_REQ(6));
 	mrb_define_module_function(mrb, rtcModule, "getTime", mrb_rtc_getTime, MRB_ARGS_NONE());

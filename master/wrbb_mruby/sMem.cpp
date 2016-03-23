@@ -1,11 +1,11 @@
 /*
  * ファイル関連
  *
- * Copyright (c) 2015-2016 Minao Yamamoto
+ * Copyright (c) 2016 Wakayama.rb Ruby Board developers
  *
  * This software is released under the MIT License.
- * 
- * https://github.com/tarosay/Wakayama-mruby-board/blob/master/MITL
+ * https://github.com/wakayamarb/wrbb-v2lib-firm/blob/master/MITL
+ *
  */
 #include <Arduino.h>
 #include <eepfile.h>

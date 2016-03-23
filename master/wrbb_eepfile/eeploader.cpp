@@ -1,17 +1,16 @@
 /*
  * EEPROM FIle Loader
  *
- * Copyright (c) 2015-2016 Minao Yamamoto
+ * Copyright (c) 2016 Wakayama.rb Ruby Board developers
  *
  * This software is released under the MIT License.
- * 
- * https://github.com/tarosay/Wakayama-mruby-board/blob/master/MITL
+ * https://github.com/wakayamarb/wrbb-v2lib-firm/blob/master/MITL
+ *
  */
 #include <Arduino.h>
 #include <reboot.h>
 
 #include <eepfile.h>
-//#include <rubic.h>
 
 #include <mruby.h>
 #include <mruby/string.h>
@@ -33,8 +32,6 @@ bool StopFlg = false;		//強制終了フラグ
 
 HardwareSerial *USB_Serial = &Serial;
 
-//extern int Ack_FE_mode;		//0xFEを読んだときのモード。0:0xFEを読んだときに0xFEを返さない。普通にバッファに残す 1:0xFEを返す, 2:割り込みを発生させない
-
 //#define DEBUG				// Define if you want to debug
 
 #ifdef DEBUG
@@ -48,17 +45,27 @@ HardwareSerial *USB_Serial = &Serial;
 //**************************************************
 void lineinput(char *arry)
 {
-	int k = 0;
 	int len = 0; 
+	int k = 0;
+	arry[len] = 0;
+	int loopCnt = 0;
+
+	k = USB_Serial->read();
+	DEBUG_PRINT("0:USB_Serial->read", k);
+	//バッファにH か0x0Dか0x0Dがあるときにはバッファをクリアした後returnさせるため、arry[0]に0x0Dを入れる。
+	if(k == 'H' || k == 0x0D || k == 0x0A){
+		arry[len] = 0x0D;
+	}
 
 	while(k >= 0){
 		k = USB_Serial->read();
-		if(k == 0xFE){
-			DEBUG_PRINT("USB_Serial->read", k);
-			USB_Serial->print(0xFE);
-			arry[len] = 0;
-		}
 		delay(4);
+		DEBUG_PRINT("1:USB_Serial->read", k);
+	}
+
+	if(arry[len] == 0x0D){
+		arry[len] = 0;
+		return;
 	}
 
 	while(true){
@@ -67,15 +74,10 @@ void lineinput(char *arry)
 			k = USB_Serial->read();
 			delay(8);
 		}
+		DEBUG_PRINT("2:USB_Serial->read", k);
 
 		if (k == 0x0D || k == 0x0A){	//改行
-			break;		
-		}
-		else if(k == 0xFE){				//0xFEアック
-			//0xFEを返す
-			USB_Serial->print(0xFE);
-			USB_Serial->flush();
-			continue;
+			break;
 		}
 		else if (k == 0x08){			//BS
 			len--;
@@ -191,27 +193,13 @@ bool writefile(const char *fname, int size, char code, char *readData)
 	char c;
 	tm = millis() + 2000;
 
-	////b2aFlgが 0 のときはバイナリ、1 のときはバイナリが2バイトテキストで送られてくる
 	while(cnt < size){
 		len = USB_Serial->available();
 		if (len > 0){
-			//if(b2aFlg == 0){
-				//****バイナリ
-				for(int i=0; i<len; i++){
-					readData[cnt + i] = (char)USB_Serial->read();
-				}
-				cnt += len;
-			//}
-			//else{
-			//	//****テキスト
-			//	for(int i=0; i<len; i++){
-			//		c = USB_Serial->read();
-			//		if(c != 0xFE){
-			//			readData[cnt] = (char)c;
-			//			cnt++;
-			//		}
-			//	}
-			//}
+			for(int i=0; i<len; i++){
+				readData[cnt + i] = (char)USB_Serial->read();
+			}
+			cnt += len;
 			tm = millis() + 2000;
 		}
 		if(tm < millis()){	break;	}
@@ -374,7 +362,7 @@ int fileloader(const char* str0, const char* str1)
 			USB_Serial->print(str1);
 		}
 		USB_Serial->println(" (H [ENTER])");
-		USB_Serial->print(">");
+		USB_Serial->print(">>");
 		USB_Serial->flush();
 
 		lineinput((char*)CommandData);
@@ -469,11 +457,6 @@ int fileloader(const char* str0, const char* str1)
 				strcpy(fname, fs[0]);
 				size = atoi(fs[1]);
 
-				////0xFEアックを返さないようにする
-				//if(Ack_FE_mode == 1 && CommandData[0] == 'W'){
-				//	rubic_ACK(0);
-				//}
-
 				//ヒープメモリの確保
 				char *readData = (char*)malloc(size);
 				if(readData == NULL){
@@ -484,11 +467,6 @@ int fileloader(const char* str0, const char* str1)
 					writefile(fname, size, CommandData[0], readData);
 					free( readData );
 				}
-
-				////Ack_FE_mode==0だったら、0xFEアックを返すように戻す
-				//if(Ack_FE_mode == 0 && CommandData[0] == 'W'){
-				//	rubic_ACK(1);
-				//}
 
 				for(int i=0; i<j; i++){ *(fs[i] - 1) = ' '; }
 			}
@@ -520,11 +498,6 @@ int fileloader(const char* str0, const char* str1)
 					strcat(RubyFilename, ".mrb");				
 				}
 
-				////0xFEアックを返さないようにする
-				//if(Ack_FE_mode == 1 && CommandData[0] == 'X'){
-				//	rubic_ACK(0);
-				//}
-
 				//ヒープメモリの確保
 				char *readData = (char*)malloc(size);
 				if(readData == NULL){
@@ -535,11 +508,6 @@ int fileloader(const char* str0, const char* str1)
 					StopFlg = writefile(RubyFilename, size, CommandData[0], readData);
 					free( readData );
 				}
-
-				////Ack_FE_mode==0だったら、0xFEアックを返すように戻す
-				//if(Ack_FE_mode == 0 && CommandData[0] == 'X'){
-				//	rubic_ACK(1);
-				//}
 
 				for(int i=0; i<j; i++){ *(fs[i] - 1) = ' '; }
 				break;
@@ -593,10 +561,7 @@ int fileloader(const char* str0, const char* str1)
 		}
 		else{
 			USB_Serial->println();
-			//if(Ack_FE_mode == 1){
-			//	USB_Serial->print("*");
-			//}
-			USB_Serial->println("EEPROM FileWriter Ver. 1.71");
+			USB_Serial->println("EEPROM FileWriter Ver. 1.74.v2");
 			USB_Serial->println(" Command List");
 			USB_Serial->println(" L:List Filename..........>L [ENTER]");
 			USB_Serial->println(" W:Write File.............>W Filename Size [ENTER]");

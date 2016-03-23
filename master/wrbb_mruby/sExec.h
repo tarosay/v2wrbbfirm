@@ -1,11 +1,11 @@
 /*
  * 呼び出し実行モジュールプログラム
  *
- * Copyright (c) 2015 Minao Yamamoto
+ * Copyright (c) 2016 Wakayama.rb Ruby Board developers
  *
  * This software is released under the MIT License.
- * 
- * http://opensource.org/licenses/mit-license.php
+ * https://github.com/wakayamarb/wrbb-v2lib-firm/blob/master/MITL
+ *
  */
  
 #ifndef _SEXEC_H_
